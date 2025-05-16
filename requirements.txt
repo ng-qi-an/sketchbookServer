@@ -5,3 +5,4 @@ pillow
 secrets
 pydrive
 eventlet
+pyOpenSSL
