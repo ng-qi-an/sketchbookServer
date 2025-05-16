@@ -99,4 +99,4 @@ if __name__ == '__main__':
     print("Starting server...")
     if not os.path.exists("tempPhotos"):
         os.makedirs("tempPhotos")
-    socketio.run(app, host="0.0.0.0", port=5671)
+    socketio.run(app, host="0.0.0.0", port=5671, allow_unsafe_werkzeug=True)
