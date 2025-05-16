@@ -5,13 +5,18 @@ import io, base64
 from PIL import Image
 import secrets
 import os
-import time
 
 from pydrive2.auth import GoogleAuth
 from pydrive2.drive import GoogleDrive
 
-gauth = GoogleAuth()
-gauth.LocalWebserverAuth(port_numbers=[8224])
+gauth = GoogleAuth(settings={
+    "client_config_backend": "service",
+    "service_config": {
+        "client_json_file_path": "service-secrets.json",
+    }
+})
+# Authenticate
+gauth.ServiceAuth()
 drive = GoogleDrive(gauth)
 
 
@@ -91,4 +96,7 @@ def handle_disconnect():
     print('Client disconnected')
 
 if __name__ == '__main__':
+    print("Starting server...")
+    if not os.path.exists("tempPhotos"):
+        os.makedirs("tempPhotos")
     socketio.run(app, host="0.0.0.0", port=5671)

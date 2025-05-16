@@ -1,3 +1,3 @@
 # SketchbooksServer
 
-Download .json secrets file from Google Cloud when creating a new Oath key. Rename the .json file to client_secrets.json.
+Create a service account that has access to a google drive where you want the photos to be uploaded to. Then, upload the key and name it service-secrets.json

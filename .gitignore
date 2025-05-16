@@ -127,3 +127,4 @@ dmypy.json
 
 tempPhotos/
 client_secrets.json
+service-secrets.json
