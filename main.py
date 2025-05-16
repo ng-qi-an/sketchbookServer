@@ -3,8 +3,8 @@ from flask_socketio import SocketIO, emit, join_room
 from flask_cors import CORS
 import io, base64
 from PIL import Image
-import secrets
 import os
+import uuid
 
 from pydrive2.auth import GoogleAuth
 from pydrive2.drive import GoogleDrive
@@ -50,7 +50,7 @@ def handle_connect():
 @socketio.on("uploadPhoto")
 def uploadPhoto(data):
     try:
-        photoID = secrets.token_urlsafe(24)
+        photoID = uuid.uuid1().hex
         if not data['givenConsent']:
             photoID += "_noConsent"
         img = Image.open(io.BytesIO(base64.decodebytes(bytes(data['photo'], "utf-8"))))
