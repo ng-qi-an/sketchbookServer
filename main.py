@@ -26,7 +26,7 @@ app.config['validLinks'] = []
 
 app.config['PASSWORD'] = "234123"
 app.config['SECRET_KEY'] = 'your-secret-key'
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins="*", path='sketchbook/socket.io')
 
 
 def getSortedPhotos():
